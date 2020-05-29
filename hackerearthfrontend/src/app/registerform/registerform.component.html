@@ -1,0 +1,95 @@
+<div fxFlex fxFlexOffset="20px" class="form-size">
+  <h3>Send us your Feedback</h3>
+  <p>{{ registerForm.value | json }} {{ registerForm.status | json }}</p>
+  <form novalidate [formGroup]="registerForm" #fform="ngForm" (ngSubmit)="onSubmit()"  *ngIf="showForm">
+    <p>
+      <mat-form-field class="half-width">
+        <input matInput formControlName="name" placeholder="Your Name" type="text" required>
+        <mat-error *ngIf="formErrors.name">{{ formErrors.name}}</mat-error>
+      </mat-form-field>
+      <!-- <mat-form-field class="half-width">
+        <input matInput formControlName="lastname" placeholder="Last Name" type="text">
+      </mat-form-field> -->
+    </p>
+    <p>
+      <mat-form-field class="half-width">
+        <input matInput formControlName="mobile" placeholder="Mobile Number" type="tel" pattern="[0-9]*" required>
+        <mat-error *ngIf="formErrors.mobile">{{ formErrors.mobile}}</mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="half-width">
+        <input matInput formControlName="email" placeholder="Email" type="email" required>
+        <mat-error *ngIf="formErrors.email">{{formErrors.email }}</mat-error>
+      </mat-form-field>
+    </p>
+    <table class="half-width">
+      <!-- <td>
+        <mat-slide-toggle formControlName="agree">May we contact you?</mat-slide-toggle>
+      </td> -->
+      <td>
+        <mat-label>Registration Type</mat-label>
+        <mat-select placeholder="Select registration type" formControlName="registrationtype" required>
+          <mat-option *ngFor="let ctype of registerationType" [value]="ctype">
+            {{ ctype }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="formErrors.registrationtype">{{formErrors.registrationtype }}</mat-error>
+      </td>
+      </table>
+    <p >
+      <mat-form-field class="half-width">
+        <input matInput formControlName="numtickets" placeholder="Number of Tickets" type="number" required>
+        <mat-error *ngIf="formErrors.numtickets">{{formErrors.numtickets }}</mat-error>
+      </mat-form-field>
+    </p>
+    <!-- <p *ngIf="registrationtype !== 'Self'">
+      <mat-form-field class="half-width">
+        <input matInput formControlName="numtickets" placeholder="Number of Tickets" type="number"  required>
+        <mat-error *ngIf="formErrors.numtickets">{{formErrors.numtickets }}</mat-error>
+      </mat-form-field>
+    </p> -->
+    <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="registerForm.invalid">Submit</button>
+  </form>
+</div>
+  <div [hidden]="showForm || submitted" >
+    <h3>Submitting Form</h3>
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="submitted" >
+      <h3>Your Submission</h3>
+        <p>Registration Number: {{submitted._id}}</p>
+        <p>First Name: {{submitted.name}}</p>
+        <p>Tel. Number: {{submitted.mobile}}</p>
+        <p>Email: {{submitted.email}}</p>
+        <p>Registered on : {{submitted.createdAt | date}}</p>
+
+    </div>
+  <div fxFlex>
+    <h2>Corporate Leadership</h2>
+    <mat-list *ngIf="candidates">
+        <mat-list-item *ngFor="let candidate of candidates">
+          <!-- <img mat-list-avatar src="{{ baseURL + leader.image }}" alt={{leader.name}}> -->
+          <h4 matLine> {{candidate.name}}</h4>
+            <p matLine>{{candidate._id}}</p>
+            <p matLine> {{candidate.mobile}}</p>
+            <p matLine>{{candidate.email}}</p>
+            <p matLine>{{candidate.createdAt | date }}</p>
+        </mat-list-item>
+      </mat-list>
+      <div [hidden]="candidates || errMess">
+          <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+      </div>
+      <div *ngIf="errMess">
+        <h2>Error</h2>
+        <h4>{{errMess}}</h4>
+      </div>
+  </div>
+  <!-- <div [hidden]="candidates || errMess">
+    {{candidates}}
+  </div>
+  <div fxFlex *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
+  </div> -->
+<!-- </div> -->

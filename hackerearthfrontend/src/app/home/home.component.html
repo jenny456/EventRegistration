@@ -1,0 +1,22 @@
+<div class="container jumbotron"
+    fxLayout="row"
+    fxLayout.sm="column"
+    fxLayout.xs="column"
+    fxLayoutAlign.xs="start center"
+    fxLayoutAlign.sm="start center"
+    fxLayoutAlign.gt-sm="center center"
+    fxLayoutGap="10px">
+
+  <div fxFlex fxFlex.gt-sm="50%">
+
+    <h1>Event Name</h1>
+    <p>Some Nice description</p>
+      <span class="flex-spacer"></span>
+  <!-- <a mat-button (click)="openRegistrationForm()"><span ></span> Register</a> -->
+  <a mat-button routerLink="/form" routerLinkActive='active'><span class="fa fa-address-card fa-lg"></span> Regster Now!</a>
+  </div>
+  <div fxFlex fxFlex.gt-sm="20%">
+    <img src="/assets/images/logo.png" alt="Logo">
+  </div>
+  <div fxFlex></div>
+</div>
