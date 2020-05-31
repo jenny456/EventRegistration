@@ -4,14 +4,14 @@ const mongoose = require('mongoose');
 
 const Candidates= require('../models/candidates');
 const cors = require('./cors');
-
+var authenticate = require('../authenticate');
 const candidateRouter = express.Router();
 
 candidateRouter.use(bodyParser.json());
 
 
 candidateRouter.route('/')
-.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
+.options(cors.corsWithOptions,authenticate.verifyUser, (req, res) => { res.sendStatus(200); })
 .get(cors.cors,(req,res,next) => {
     Candidates.find({})
     .then((candidates) => {

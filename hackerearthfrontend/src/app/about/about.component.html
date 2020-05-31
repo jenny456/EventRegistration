@@ -1,5 +1,20 @@
-<p>
-  about works!
-</p>
-
-<p> lets add </p>
+<div fxFlex>
+  <h2>Registered Candidates</h2>
+  <mat-list *ngIf="candidates">
+      <mat-list-item *ngFor="let candidate of candidates">
+        <!-- <img mat-list-avatar src="{{ baseURL + leader.image }}" alt={{leader.name}}> -->
+        <h4 matLine> {{candidate.name}}</h4>
+          <p matLine>{{candidate._id}}</p>
+          <p matLine> {{candidate.mobile}}</p>
+          <p matLine>{{candidate.email}}</p>
+          <p matLine>{{candidate.createdAt | date }}</p>
+      </mat-list-item>
+    </mat-list>
+    <div [hidden]="candidates || errMess">
+        <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+    </div>
+    <div *ngIf="errMess">
+      <h2>Error</h2>
+      <h4>{{errMess}}</h4>
+    </div>
+</div>

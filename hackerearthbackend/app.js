@@ -4,16 +4,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
-
+var passport = require('passport');
+var authenticate = require('./authenticate');
+var config = require('./config');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var candidateRouter = require('./routes/candidateRouter');
-
+var session = require("express-session");
 const Candidates=require('./models/candidates');
 
 var app = express();
 
-const url='mongodb://localhost:27017/hackerearth';
+const url=config.mongoUrl;
 const connect = mongoose.connect(url);
 
 connect.then((db) => {
@@ -27,9 +29,9 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(passport.initialize());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/candidate',candidateRouter);

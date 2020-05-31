@@ -18,7 +18,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import 'hammerjs';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -30,7 +30,11 @@ import { RegisterformComponent } from './registerform/registerform.component';
 
 import {CandidateService} from './services/candidate.service';
 import {ProcessHTTPMsgService} from './services/process-httpmsg.service';
+import { AuthService } from './services/auth.service';
+import { AuthInterceptor, UnauthorizedInterceptor } from './services/auth.interceptor';
+import { AuthGuardService } from './services/auth-guard.service';
 import { baseURL } from './shared/baseurl';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,8 @@ import { baseURL } from './shared/baseurl';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    RegisterformComponent
+    RegisterformComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -64,10 +69,22 @@ import { baseURL } from './shared/baseurl';
     HttpClientModule
   ],
   providers: [CandidateService,
+    AuthService,
+    AuthGuardService,
     {provide: 'BaseURL', useValue: baseURL},
-    ProcessHTTPMsgService],
+    ProcessHTTPMsgService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UnauthorizedInterceptor,
+      multi: true
+    }],
   entryComponents: [
-    RegisterformComponent
+    LoginComponent,
   ],
   bootstrap: [AppComponent]
 })
