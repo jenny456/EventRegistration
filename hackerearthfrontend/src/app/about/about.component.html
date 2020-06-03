@@ -1,8 +1,8 @@
-<div fxFlex>
+<!-- <div fxFlex>
   <h2>Registered Candidates</h2>
   <mat-list *ngIf="candidates">
       <mat-list-item *ngFor="let candidate of candidates">
-        <!-- <img mat-list-avatar src="{{ baseURL + leader.image }}" alt={{leader.name}}> -->
+        
         <h4 matLine> {{candidate.name}}</h4>
           <p matLine>{{candidate._id}}</p>
           <p matLine> {{candidate.mobile}}</p>
@@ -17,4 +17,44 @@
       <h2>Error</h2>
       <h4>{{errMess}}</h4>
     </div>
-</div>
+</div> --> 
+
+
+<div fxFlex>
+
+
+  <mat-accordion *ngIf="candidates" multi="true"> <!--add mat-extension pannels dynmaically-->
+    <mat-list-item *ngFor="let candidate of candidates">
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{candidate._id}}
+          </mat-panel-title>
+          <mat-panel-description>
+            This is the registration id of the candidate
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+            <p>
+              <mat-list>
+                <mat-list-item>
+                    <p matLine>Name            : {{candidate.name}}</p>
+                    <!-- <p matLine>{{candidate._id}}</p> -->
+                    <p matLine>Contact         : {{candidate.mobile}}</p>
+                    <p matLine>Mail id         : {{candidate.email}}</p>
+                    <p matLine>Date Registered :{{candidate.createdAt | date }}</p>
+                </mat-list-item>
+              </mat-list>
+              <div [hidden]="candidates || errMess">
+                  <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+              </div>
+              <div *ngIf="errMess">
+                <h2>Error</h2>
+                <h4>{{errMess}}</h4>
+              </div>
+      </mat-expansion-panel>
+    
+     </mat-list-item>
+    </mat-accordion>
+
+</div> 
