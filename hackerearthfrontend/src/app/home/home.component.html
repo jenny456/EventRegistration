@@ -9,20 +9,41 @@
     fxLayoutGap="10px">
 
   <div fxFlex fxFlex.gt-sm="50%">
-    <h1>EVENT NAME</h1>
+    <!-- <h1>STACK HACK 1.0</h1> -->
     <span class="flex-spacer"></span>
    </div>
 
-    <div fxFlex fxFlex.gt-sm="20%">
+    <div fxFlex fxFlex.gt-sm="20%" class="z-depth-1">
       <img src="/assets/images/logo.png" alt="Logo">
     </div>
-  <div fxFlex>
-    <p>Some Nice description</p>
+
+  <div fxFlex 
+  style="background-color: cornsilk; width:100%; align-items: center;">
+    <p style="text-align: center;">
+      It’s true that being a specialist in one’s field and gaining mastery of a particular aspect of
+       technology has distinct advantages, but as technology rapidly expands and evolves,
+        industries are constantly changing. With this change comes the need for skills branching 
+        out to multiple technologies and the ability to
+       build end to end products to potentially transform the way people live around the world!
+    </p>
+    <p style="text-align: center;">
+      With that said, HackerEarth presents StackHack 1.0, inviting all developers and hackathon enthusiasts
+       to come up with fantastic ideas to build minimal viable products from scratch.
+       Code your way from the backend to the frontend and design products to inspire!
+    </p>
+    <p style="text-align: center;">
+      This hackathon is open to all developers who have an eye for design and passion for code.
+       Participants can either hack individually or as a team of four. Take advantage of 
+      this opportunity to learn with other teams, showcase your talent, and compete for prizes!
+    </p>
       <span class="flex-spacer"></span>
   <!-- <a mat-button (click)="openRegistrationForm()"><span ></span> Register</a> -->
-  <a mat-button routerLink="/form" routerLinkActive='active'><span class="fa fa-address-card fa-lg"></span> Regster Now!</a>
   </div>
   
-  <div fxFlex></div>
+  <div fxFlex   >
+    <a mat-button routerLink="/form" routerLinkActive='active' style="background-color: blanchedalmond;">
+      <span class="fa fa-address-card fa-lg" 
+       style="text-align:center;"></span> Regster Now!</a>
+  </div>
 </div>
 <app-footer></app-footer>

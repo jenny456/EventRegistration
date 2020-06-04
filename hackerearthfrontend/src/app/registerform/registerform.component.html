@@ -5,7 +5,8 @@ fxLayoutAlign="center">
 
 <div fxFlex fxFlexOffset="20px" 
 fxLayout="column" 
-fxLayoutAlign="center center" >
+fxLayoutAlign="center center" 
+class="z-depth-5">
 
   <h3>Send us your Feedback</h3>
   <p>{{ registerForm.value | json }} {{ registerForm.status | json }}</p>
@@ -13,9 +14,11 @@ fxLayoutAlign="center center" >
   <mat-toolbar style="background-color: burlywood;">
     Registration
     <span class="flex-spacer"></span>
-  <button mat-button mat-dialog-close>&times;</button>
+  <button mat-button >&times;</button>
   </mat-toolbar>
-  <form novalidate [formGroup]="registerForm" #fform="ngForm" (ngSubmit)="onSubmit()"  *ngIf="showForm">
+
+  <form novalidate [formGroup]="registerForm" #fform="ngForm" (ngSubmit)="onSubmit()"  *ngIf="showForm"
+  class="z-depth-5">
     <h3 mat-dailog-title>Name</h3>
     <p>
         <mat-form-field class="half-width" >

@@ -20,19 +20,24 @@
 </div> --> 
 
 
+<div fxFlex
+fxLayout="column">
+<app-header></app-header>
+
 <div fxFlex>
-
-
+  <h1>Admin Panel</h1>
+</div>
+<div fxFlex>
   <mat-accordion *ngIf="candidates" multi="true"> <!--add mat-extension pannels dynmaically-->
     <mat-list-item *ngFor="let candidate of candidates">
 
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            {{candidate._id}}
+            Registration id of the candidate
           </mat-panel-title>
           <mat-panel-description>
-            This is the registration id of the candidate
+            {{candidate._id}}
           </mat-panel-description>
         </mat-expansion-panel-header>
             <p>
@@ -56,5 +61,10 @@
     
      </mat-list-item>
     </mat-accordion>
+
+
+
+
+ </div>
 
 </div> 
