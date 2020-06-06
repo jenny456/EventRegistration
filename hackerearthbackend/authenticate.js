@@ -5,20 +5,16 @@ var config = require('./config.js');
 var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
-
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
 exports.getToken = function(user) {
     return jwt.sign(user, config.secretKey,
-        {expiresIn: 360000});
+        {expiresIn: 3600000});
 };
-
 var opts ={};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = config.secretKey;
-
 exports.jwtPassport = passport.use(new JwtStrategy(opts,
     (jwt_payload,done) => {
         console.log("JWT payload " +jwt_payload);
@@ -34,9 +30,7 @@ exports.jwtPassport = passport.use(new JwtStrategy(opts,
             }
         })
     }));
-
 exports.verifyUser = passport.authenticate('jwt',{session:false});
-
 exports.verifyAdmin = function(req,res,next) {
     User.findOne({_id: req.user._id})
     .then((user) => {

@@ -23,6 +23,8 @@ connect.then((db) => {
   console.log("Connected correctly to server");
 }, (err) => { console.log(err); });
 
+
+//to initialise db admin
 var user= new Users ({
   username:"admin",
   password: "admin",

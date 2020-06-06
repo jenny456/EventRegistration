@@ -1,9 +1,28 @@
-<div fxFlex fxFlexOffset="20px" class="form-size">
-  <h3>Send us your Feedback</h3>
-  <p>{{ registerForm.value | json }} {{ registerForm.status | json }}</p>
-  <form novalidate [formGroup]="registerForm" #fform="ngForm" (ngSubmit)="onSubmit()"  *ngIf="showForm">
+<div fxFlex fxLayout="column"
+fxLayoutAlign="center">
+
+  <app-header></app-header>
+
+<div fxFlex fxFlexOffset="20px"
+fxLayout="column"
+fxLayoutAlign="center center"
+class="z-depth-5">
+
+  <!-- <h3>Send us your Feedback</h3>
+  <p>{{ registerForm.value | json }} {{ registerForm.status | json }}</p> -->
+<div fxFlex style="background-color: blanchedalmond;" class="z-depth-5" class="full-width">
+
+
+  <form novalidate [formGroup]="registerForm" #fform="ngForm" (ngSubmit)="onSubmit()"  *ngIf="showForm"
+  class="z-depth-5">
+  <mat-toolbar style="background-color: burlywood;">
+    Registration
+    <span class="flex-spacer"></span>
+  <!-- <button mat-button >&times;</button> -->
+  </mat-toolbar>
+    <h3 mat-dailog-title>Name</h3>
     <p>
-      <mat-form-field class="half-width">
+        <mat-form-field class="half-width" >
         <input matInput formControlName="name" placeholder="Your Name" type="text" required>
         <mat-error *ngIf="formErrors.name">{{ formErrors.name}}</mat-error>
       </mat-form-field>
@@ -11,33 +30,35 @@
         <input matInput formControlName="lastname" placeholder="Last Name" type="text">
       </mat-form-field> -->
     </p>
+    <h3 mat-dailog-title>Contact no.</h3>
     <p>
       <mat-form-field class="half-width">
         <input matInput formControlName="mobile" placeholder="Mobile Number" type="tel" pattern="[0-9]*" required>
         <mat-error *ngIf="formErrors.mobile">{{ formErrors.mobile}}</mat-error>
       </mat-form-field>
     </p>
+    <h3 mat-dailog-title>Email</h3>
     <p>
-      <mat-form-field class="half-width">
+      <mat-form-field class="half-width" appearance="legacy">
         <input matInput formControlName="email" placeholder="Email" type="email" required>
         <mat-error *ngIf="formErrors.email">{{formErrors.email }}</mat-error>
       </mat-form-field>
     </p>
-    <table class="half-width">
-      <!-- <td>
-        <mat-slide-toggle formControlName="agree">May we contact you?</mat-slide-toggle>
-      </td> -->
-      <td>
-        <mat-label>Registration Type</mat-label>
-        <mat-select placeholder="Select registration type" formControlName="registrationtype" required>
-          <mat-option *ngFor="let ctype of registerationType" [value]="ctype">
-            {{ ctype }}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="formErrors.registrationtype">{{formErrors.registrationtype }}</mat-error>
-      </td>
-      </table>
-    <p >
+    <h3 mat-dialog-title>Registration Type</h3>
+    <p>
+      <mat-form-field class="half-width" appearnce="legacy">
+      <mat-select style="text-align: center;"placeholder="Select registration type" formControlName="registrationtype" required>
+        <mat-option *ngFor="let ctype of registerationType" [value]="ctype">
+          {{ ctype }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="formErrors.registrationtype">{{formErrors.registrationtype }}</mat-error>
+    </mat-form-field>
+    </p>
+
+
+      <h3 mat-dailog-title>Tickets</h3>
+    <p>
       <mat-form-field class="half-width">
         <input matInput formControlName="numtickets" placeholder="Number of Tickets" type="number" required>
         <mat-error *ngIf="formErrors.numtickets">{{formErrors.numtickets }}</mat-error>
@@ -56,40 +77,30 @@
     <h3>Submitting Form</h3>
     <mat-spinner></mat-spinner>
   </div>
+  <p class="flex-spacer"></p>
+</div>
   <div *ngIf="submitted" >
-      <h3>Your Submission</h3>
-        <p>Registration Number: {{submitted._id}}</p>
+    <mat-card class="example-card" layout-align="center center">
+      <mat-card-header>
+        <mat-card-title>
+          <h2 style="color:green">Your Submission : Succesful</h2>
+          <h4>Registration ID: {{submitted._id}}</h4>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- <p>Registration Number: {{submitted._id}}</p> -->
         <p>First Name: {{submitted.name}}</p>
         <p>Tel. Number: {{submitted.mobile}}</p>
         <p>Email: {{submitted.email}}</p>
+        <p>Registration Type: {{submitted.registrationtype}}</p>
+        <p>Number of Tickets:{{submitted.numtickets}}</p>
         <p>Registered on : {{submitted.createdAt | date}}</p>
+      </mat-card-content>
+    </mat-card>
 
     </div>
-  <div fxFlex>
-    <h2>Corporate Leadership</h2>
-    <mat-list *ngIf="candidates">
-        <mat-list-item *ngFor="let candidate of candidates">
-          <!-- <img mat-list-avatar src="{{ baseURL + leader.image }}" alt={{leader.name}}> -->
-          <h4 matLine> {{candidate.name}}</h4>
-            <p matLine>{{candidate._id}}</p>
-            <p matLine> {{candidate.mobile}}</p>
-            <p matLine>{{candidate.email}}</p>
-            <p matLine>{{candidate.createdAt | date }}</p>
-        </mat-list-item>
-      </mat-list>
-      <div [hidden]="candidates || errMess">
-          <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
-      </div>
-      <div *ngIf="errMess">
-        <h2>Error</h2>
-        <h4>{{errMess}}</h4>
-      </div>
-  </div>
-  <!-- <div [hidden]="candidates || errMess">
-    {{candidates}}
-  </div>
-  <div fxFlex *ngIf="errMess">
-    <h2>Error</h2>
-    <h4>{{errMess}}</h4>
-  </div> -->
-<!-- </div> -->
+
+
+</div>
+
+

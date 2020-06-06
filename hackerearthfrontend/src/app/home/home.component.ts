@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
   openRegistrationForm() {
-    this.dialog.open(RegisterformComponent, { width: '800px', height: '700px'});
+    this.dialog.open(RegisterformComponent, { width: '800px', height: '720px'});
   }
 
 }

@@ -13,10 +13,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
+import {MatTooltipModule} from '@angular/material/tooltip';
+// import {TooltipPosition} from '@angular/material/tooltip';
+// import { ChartsModule } from 'ng2-charts';
+// import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatExpansionModule} from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import 'hammerjs';
@@ -25,7 +30,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
+
 import { RegisterformComponent } from './registerform/registerform.component';
 
 import {CandidateService} from './services/candidate.service';
@@ -43,7 +48,6 @@ import { LoginComponent } from './login/login.component';
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    ContactComponent,
     RegisterformComponent,
     LoginComponent
   ],
@@ -66,7 +70,11 @@ import { LoginComponent } from './login/login.component';
     MatSlideToggleModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule,
+    MatTooltipModule
+    // TooltipPosition
+    // ChartsModule
   ],
   providers: [CandidateService,
     AuthService,

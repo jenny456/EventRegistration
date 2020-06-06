@@ -3,7 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { LoginComponent } from '../login/login.component';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-
+// import {TooltipPosition} from '@angular/material/tooltip';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
 
     openLoginForm() {
-      const loginRef = this.dialog.open(LoginComponent, {width: '500px', height: '450px'});
+      const loginRef = this.dialog.open(LoginComponent, {width: '350px', height: '370px'});
 
       loginRef.afterClosed()
         .subscribe(result => {

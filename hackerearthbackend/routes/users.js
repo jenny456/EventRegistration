@@ -71,18 +71,6 @@ router.post('/login', cors.corsWithOptions, (req, res,next) => {
   }) (req,res,next);
 });
 
-// router.get('/logout', cors.corsWithOptions,(req, res) => {
-//   if (req.session) {
-//     req.session.destroy();
-//     res.clearCookie('session-id');
-//     res.redirect('/');
-//   }
-//   else {
-//     var err = new Error('You are not logged in!');
-//     err.status = 403;
-//     next(err);
-//   }
-// });
 router.get("/logout",cors.corsWithOptions, (req, res) => {
   if (req.session) {
     req.session.destroy();
