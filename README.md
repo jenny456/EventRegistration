@@ -28,4 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # To run server side
 
-NAvigate to hackerearthbackend folfer and run `npm start`
+Navigate to hackerearthbackend folfer and run `npm start`
