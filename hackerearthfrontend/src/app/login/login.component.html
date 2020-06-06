@@ -5,8 +5,9 @@
 </mat-toolbar>
 
 <div *ngIf="errMess">
-<h2>Error</h2>
-<h4>{{errMess}}</h4>
+<h3 style="color:red">Error:Not Authorized to Login</h3>
+<!-- <h4 style="color:red">Not Authorized to Login</h4> -->
+<!-- <h6 style="color:red">{{errMess}}</h6> -->
 </div>
 
 <form novalidate #loginForm="ngForm" (ngSubmit)="onSubmit()">

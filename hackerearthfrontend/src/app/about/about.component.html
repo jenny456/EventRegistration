@@ -1,25 +1,3 @@
-<!-- <div fxFlex>
-  <h2>Registered Candidates</h2>
-  <mat-list *ngIf="candidates">
-      <mat-list-item *ngFor="let candidate of candidates">
-        
-        <h4 matLine> {{candidate.name}}</h4>
-          <p matLine>{{candidate._id}}</p>
-          <p matLine> {{candidate.mobile}}</p>
-          <p matLine>{{candidate.email}}</p>
-          <p matLine>{{candidate.createdAt | date }}</p>
-      </mat-list-item>
-    </mat-list>
-    <div [hidden]="candidates || errMess">
-        <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
-    </div>
-    <div *ngIf="errMess">
-      <h2>Error</h2>
-      <h4>{{errMess}}</h4>
-    </div>
-</div> --> 
-
-
 <div fxFlex
 fxLayout="column">
 <app-header></app-header>
@@ -28,6 +6,17 @@ fxLayout="column">
   <h1>Admin Panel</h1>
 </div>
 <div fxFlex>
+  <mat-list *ngIf="candidates" class="list-horizontal">
+    <!-- <div> -->
+      <mat-list-item ><strong>Candidates Registered as Self:{{countSelf}}</strong></mat-list-item>
+      <mat-list-item><strong>Candidates Registered as Group:{{countGroup}}</strong></mat-list-item>
+    <!-- </div> -->
+    <!-- <div> -->
+      <mat-list-item><strong>Candidates Registered as Corporate:{{countCorporate}}</strong></mat-list-item>
+      <mat-list-item><strong>Candidates Registered as Other:{{countOther}}</strong></mat-list-item>
+    <!-- </div> -->
+  </mat-list>
+
   <mat-accordion *ngIf="candidates" multi="true"> <!--add mat-extension pannels dynmaically-->
     <mat-list-item *ngFor="let candidate of candidates">
 
@@ -50,21 +39,19 @@ fxLayout="column">
                     <p matLine>Date Registered :{{candidate.createdAt | date }}</p>
                 </mat-list-item>
               </mat-list>
-              <div [hidden]="candidates || errMess">
-                  <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
-              </div>
-              <div *ngIf="errMess">
-                <h2>Error</h2>
-                <h4>{{errMess}}</h4>
-              </div>
+
       </mat-expansion-panel>
-    
+
      </mat-list-item>
     </mat-accordion>
 
+  <div [hidden]="candidates || errMess">
+      <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+  </div>
+  <div *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
+  </div>
+</div>
 
-
-
- </div>
-
-</div> 
+</div>

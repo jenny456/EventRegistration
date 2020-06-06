@@ -9,7 +9,7 @@ import { RegisterformComponent } from '../registerform/registerform.component';
 
 export const routes: Routes = [
   { path: 'home',  component: HomeComponent },
-  {path: 'aboutus' , component: AboutComponent, canActivate: [AuthGuard]},
+  {path: 'admin' , component: AboutComponent, canActivate: [AuthGuard]},
   { path: 'form',     component: RegisterformComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
